@@ -31,56 +31,69 @@ function playerSelection(){
 
 let cpwin = 0;
 let plwin = 0;
+let tie = 0;
 
-function playRound(playerSelection, computerSelection){
+function playRound(e){
+    let playerSelection = e.target.innerHTML;
+    let res = "";
+    let computerSelection = getComputerChoice();
     if (playerSelection == "Rock"){
         if (computerSelection == "Scissors"){
             plwin++;
-            return "You Win! Rock beats Scissors";
+            res =  "You Win! Rock beats Scissors";
         }
         else if (computerSelection == "Rock"){
-            return "You Tie! Rock ties Rock";
+            tie++;
+            res = "You Tie! Rock ties Rock";
         }
         else if (computerSelection == "Paper"){
             cpwin++;
-            return "You Lose! Paper beats Rock";
+            res =  "You Lose! Paper beats Rock";
         }
     }
     if (playerSelection == "Paper"){
         if (computerSelection == "Scissors"){
             cpwin++;
-            return "You Lose! Scissors beats Paper";
+            res =  "You Lose! Scissors beats Paper";
         }
         else if (computerSelection == "Rock"){
             plwin++;
-            return "You Win! Paper beats Rock";
+            res =  "You Win! Paper beats Rock";
         }
         else if (computerSelection == "Paper"){
-            return "You Tie! Paper ties Paper";
+            tie++;
+            res =  "You Tie! Paper ties Paper";
         }
     }
     if (playerSelection == "Scissors"){
         if (computerSelection == "Scissors"){
-            return "You Tie! Scissors ties Scissors";
+            tie++;
+            res =  "You Tie! Scissors ties Scissors";
         }
         else if (computerSelection == "Rock"){
             cpwin++;
-            return "You Lose! Rock beats Scissors";
+            res =  "You Lose! Rock beats Scissors";
         }
         else if (computerSelection == "Paper"){
             plwin++;
-            return "You Win! Scissors beats Paper";
+            res =  "You Win! Scissors beats Paper";
         }
     }
+    document.querySelector('.result').innerHTML = `Player win: ${plwin}     CPU win: ${cpwin}    Tie = ${tie}`;
+    console.log(res);
 }
 
 
 function game(){
-    for (let i = 0; i < 5; i++) {
-        let x = playerSelection();
-        let y = getComputerChoice();
-        console.log(playRound(x, y));
-    }
+    // for (let i = 0; i < 5; i++) {
+    //     let x = playerSelection();
+    //     let y = getComputerChoice();
+    //     console.log(playRound(x, y));
+    // }
+    let x = playerSelection();
+    let y = getComputerChoice();
+    console.log(playRound(x, y));
+
     if (cpwin > plwin){
         console.log(`Cp won ${cpwin} : ${plwin} `);
     }
@@ -93,7 +106,12 @@ function game(){
     
 }
 
-game();
+
+
+const userselection = document.querySelectorAll('.selection');
+userselection.forEach(selection => selection.addEventListener('click', playRound));
+
+// game();
 
 
 
