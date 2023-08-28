@@ -80,38 +80,33 @@ function playRound(e){
         }
     }
     document.querySelector('.result').innerHTML = `Player win: ${plwin}     CPU win: ${cpwin}    Tie = ${tie}`;
+    setWinner();
     console.log(res);
 }
 
+function setWinner(){
+    if (plwin < 5 && cpwin < 5){
+        return;
+    }
+    if (plwin >= 5){
+        document.querySelector('.winner').innerHTML = "Player Wins";
+    }
+    else if (cpwin >= 5){
+        document.querySelector('.winner').innerHTML = "CPU Wins";
+    }
+    cpwin = 0;
+    plwin = 0;
+    tie = 0;
+    document.querySelector('.result').innerHTML = `Player win: ${plwin}     CPU win: ${cpwin}    Tie = ${tie}`;
 
-function game(){
-    // for (let i = 0; i < 5; i++) {
-    //     let x = playerSelection();
-    //     let y = getComputerChoice();
-    //     console.log(playRound(x, y));
-    // }
-    let x = playerSelection();
-    let y = getComputerChoice();
-    console.log(playRound(x, y));
-
-    if (cpwin > plwin){
-        console.log(`Cp won ${cpwin} : ${plwin} `);
-    }
-    else if (cpwin == plwin){
-        console.log(`You tied ${cpwin} : ${plwin} `);
-    }
-    else if (cpwin > plwin){
-        console.log(`You won ${plwin} : ${cpwin} `);
-    }
-    
 }
+
 
 
 
 const userselection = document.querySelectorAll('.selection');
 userselection.forEach(selection => selection.addEventListener('click', playRound));
 
-// game();
 
 
 
