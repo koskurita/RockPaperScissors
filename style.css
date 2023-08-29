@@ -1,0 +1,101 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+    /* footer support */
+    position: relative;
+    min-height: 100%;
+  }
+
+
+body {
+    background-color: var(--primary-dark);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 100px;
+  }
+
+button {
+    border:none;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+  .header {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0px;
+    background-color: var(--header);
+  }
+
+  .title {
+    font-size: 32px;
+    font-family: cursive;
+  }
+
+  .main {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .scoreboard {
+    margin-bottom: 15px;
+  }
+
+  .score-info {
+    font-size: 32px;
+  }
+
+  .score-message {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+
+.scores-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+  }
+
+  .score-box {
+    width: 170px;
+  }
+
+  .score {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .btn {
+    border-radius: 10px;
+  }
+  
+  .btn-square {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .btn:hover {
+    background-color: var(--secondary-dark-hover);
+  }
+  
+  .btn:active {
+    background-color: var(--secondary-dark-active);
+  }
+
+  .sign {
+    font-size: 80px;
+    margin-bottom: 10px;
+  }

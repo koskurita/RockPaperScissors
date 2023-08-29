@@ -3,18 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div>
-        <button  type="button" class="selection" >Rock</button>
-        <button type="button" class="selection">Paper</button>
-        <button type="button" class="selection">Scissors</button>
-    </div>
-    <div class="result">
-        Player win: 0    CPU win: 0    Tie: 0
-    </div>
-    <div class="winner"></div>
+    <header class="header">
+        <h1 class="title">ROCK PAPER SCISSORS</h1>
+    </header>
+    <main class = "main">
+        <div class="scoreboard">
+            <h2 class="score-info" id ="scoreInfo">Choose Your Weapon!</h2>
+            <h3 class="score-message" id="roundResult">First to score 5 wins</h3>
+            <div class="scores-container">
+                <div class="score-box">
+                    <div class="sign" id="playerSign">❔</div>
+                    <div class="score" id="playerScore">Player: 0</div>
+                </div>
+                <div class="score-box">
+                    <div class="sign" id="computerSign">❔</div>
+                    <div class="score" id="computerScore">Computer: 0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button  type="button" class="btn btn-square" id="rockBtn">
+                <div class="sign">✊</div>
+            </button>
+            <button type="button" class="btn btn-square" id="paperBtn">
+                <div class="sign">✋</div>
+            </button>
+            <button type="button" class="btn btn-square" id="scissorsBtn">
+                <div class="sign">✌</div>
+            </button>
+        </div>
+        <div class="winner"></div>
+    </main>
+        
     <script src="scripts.js"></script>
 </body>
 </html>
