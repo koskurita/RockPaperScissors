@@ -7,31 +7,35 @@ let roundWinner = '';
 const rockBtn = document.getElementById('rockBtn');
 const paperBtn = document.getElementById('paperBtn');
 const scissorsBtn = document.getElementById('scissorsBtn');
-
 const scoreInfo = document.getElementById('scoreInfo');
 const roundResult = document.getElementById('roundResult');
-
 const playerSign = document.getElementById('playerSign');
 const computerSign = document.getElementById('computerSign');
 const playerScore = document.getElementById('playerScore');
 const computerScore = document.getElementById('computerScore');
-
-
-
+const endgameModal = document.getElementById('endgameModal')
+const endgameMsg = document.getElementById('endgameMsg')
+const overlay = document.getElementById('overlay')
+const restartBtn = document.getElementById('restartBtn')
 
 rockBtn.addEventListener('click', () => handleClick('Rock'));
 paperBtn.addEventListener('click', () => handleClick('Paper'));
 scissorsBtn.addEventListener('click', () => handleClick('Scissors'));
+restartBtn.addEventListener('click', resetGame)
+overlay.addEventListener('click', closeEndgameModal)
 
 function handleClick(playerSelection) {
     if (gameOver()){
-        resetGame();
+        openEndgameModal()
         return;
     }
-
     const computerSelection = getComputerChoice();
     playRound(playerSelection, computerSelection);
-
+    
+    if (gameOver()){
+        openEndgameModal()
+        return;
+    }
 }
 
 function getComputerChoice(){
@@ -84,8 +88,6 @@ function toEmoji(hand){
 }
 
 function updateScore(playerSelection, computerSelection, roundWinner) {
-
-    
     playerScore.textContent = `Computer: ${plwin}`;
     computerScore.textContent = `Computer: ${cpwin}`;
     playerSign.textContent = `${toEmoji(playerSelection)}`;
@@ -118,7 +120,27 @@ function resetGame(){
     computerScore.textContent = `Computer: ${cpwin}`;
     playerSign.textContent = '❔';
     computerSign.textContent = '❔';
+    endgameModal.classList.remove('active')
+    overlay.classList.remove('active')
 }
 
+
+
+
+function openEndgameModal() {
+    endgameModal.classList.add('active')
+    overlay.classList.add('active')
+    if (plwin > cpwin) {
+        return endgameMsg.textContent = 'You won!';
+    }
+    else {
+        return endgameMsg.textContent = 'You Lost!';
+    }
+}
+
+function closeEndgameModal() {
+    endgameModal.classList.remove('active')
+    overlay.classList.remove('active')
+}
 
 
